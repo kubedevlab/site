@@ -29,3 +29,5 @@ Depending on your home folder, that may look something like this: `ln -s ~/.ssh/
 After this you can run `make` to build the KVM image, note the default behavior is that you won't see the VM screen output, but you can adjust that behavior but updating the `base-kvm.pkr.hcl` file, updating this line to false: `headless = true`
 
 After about 5-10 minutes you should have a configured debian base image under `output`
+
+You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.

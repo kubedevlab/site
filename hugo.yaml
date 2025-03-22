@@ -48,7 +48,6 @@ languages:
     params:
       description: site
 
-
 markup:
   goldmark:
     parser:
@@ -78,11 +77,6 @@ params:
 
     # set taxonomyPageHeader = [] to hide taxonomies on the page headers
     taxonomyPageHeader: [tags, categories]
-
-  #privacy_policy: https://policies.google.com/privacy
-
-  # First one is picked as the Twitter card image if not set on page.
-  # images: [images/project-illustration.png]
 
   # Menu title if your navbar has a versions selector to access old versions of your site.
   # This menu appears only if you have at least one [params.versions] set.
@@ -115,9 +109,6 @@ params:
   # or specify a new value if you want to reference another branch in your GitHub links
   github_branch: main
 
-  # Google Custom Search Engine ID. Remove or comment out to disable search.
-  # gcs_engine_id: d72aa9b2712488cc3
-
   # Enable Lunr.js offline search
   offlineSearch: false
 
@@ -133,7 +124,7 @@ params:
     # Set to true to disable breadcrumb navigation.
     breadcrumb_disable: false
     # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
-    navbar_logo: true
+    navbar_logo: false
     # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
     navbar_translucent_over_cover_disable: false
     # Enable to show the side bar menu in its compact state.
