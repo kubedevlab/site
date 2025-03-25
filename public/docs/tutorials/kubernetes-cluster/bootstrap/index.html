@@ -1,9 +1,9 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -19,7 +19,7 @@
 
 <title>Configure VMs, bootstrap cluster | Kubedevlab</title>
 <meta name="description" content="Setup VM&#39;s, use kubeadm to create cluster">
-<meta property="og:url" content="http://localhost:1313/docs/tutorials/kubernetes-cluster/bootstrap/">
+<meta property="og:url" content="https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/bootstrap/">
   <meta property="og:site_name" content="Kubedevlab">
   <meta property="og:title" content="Configure VMs, bootstrap cluster">
   <meta property="og:description" content="Setup VM&#39;s, use kubeadm to create cluster">
@@ -27,17 +27,18 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:published_time" content="2025-03-22T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-03-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-24T22:06:43-04:00">
 
   <meta itemprop="name" content="Configure VMs, bootstrap cluster">
   <meta itemprop="description" content="Setup VM&#39;s, use kubeadm to create cluster">
   <meta itemprop="datePublished" content="2025-03-22T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-03-22T00:00:00+00:00">
-  <meta itemprop="wordCount" content="169">
+  <meta itemprop="dateModified" content="2025-03-24T22:06:43-04:00">
+  <meta itemprop="wordCount" content="332">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Configure VMs, bootstrap cluster">
   <meta name="twitter:description" content="Setup VM&#39;s, use kubeadm to create cluster">
-<link href="/scss/main.css" rel="stylesheet">
+<link rel="preload" href="/scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" as="style" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
+<link href="/scss/main.min.48c25d0a5a23a1e8cae94d6c5e7622061e5345cf098171b1d6ee41d8e309e6c8.css" rel="stylesheet" integrity="sha256-SMJdClojoejK6U1sXnYiBh5TRc8JgXGx1u5B2OMJ5sg=" crossorigin="anonymous">
 <script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -156,9 +157,35 @@
 <p>Assuming you did configure bridge mode, you&rsquo;ll want to pick out a few static IP&rsquo;s for your nodes.  You can set these via DHCP reservations, or alternatively by updating the <code>/etc/network/interfaces</code> file.</p>
 <p>After configuring a static IP, reboot the VM for it to take effect, and rename the node accordingly.</p>
 <h2 id="bootstrap-master-node">Bootstrap master node<a class="td-heading-self-link" href="#bootstrap-master-node" aria-label="Heading self-link"></a></h2>
-<p>The initial boot strapping is pretty straight forward.  Assuming everything is built correctly, you can type <code>sudo kubeadm init</code> to begin this process.  After it&rsquo;s complete it will provide a token snippet to be used on the worker nodes.  Also, it will give instructions about the <code>KUBECONFIG</code> file you need to copy off via SSH if you want to manage it remotely.</p>
+<p>The initial boot strapping is pretty straight forward.  Assuming everything is built correctly, you can type <code>sudo kubeadm init</code> to begin this process.  After it&rsquo;s complete it will provide a token snippet to be used on the worker nodes, the bootstrap message will look like this:</p>
+<pre tabindex="0"><code>Your Kubernetes control-plane has initialized successfully!
 
-	
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run &#34;kubectl apply -f [podnetwork].yaml&#34; with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.1.10:6443 --token &lt;token&gt; \
+	--discovery-token-ca-cert-hash &lt;sha&gt;
+</code></pre><p>The base build includes <code>kubectl</code> so you can set up the config on the master node, and / or copy it off you another workstation to administer remotely.  Note, this config file will have all RBAC privelidges in the cluster.</p>
+<p>Repeat the same process of setting up a static IP on the worker nodes, reboot and then bootstrap them with the join command (you may need to add <code>sudo</code>)</p>
+<p>After the nodes have joined, you can then choose / add a <a href="/docs/tutorials/kubernetes-cluster/pod-network/">pod network add-on</a></p>
+
+	<div class="td-page-meta__lastmod">
+  Last modified March 24, 2025: <a href="https://github.com/kubedevlab/site/commit/42b65eb948c263ff782fcb9c90203df2dedcd30f">update website (42b65eb)</a>
+</div>
+
 </div>
 
 
@@ -182,8 +209,8 @@
 </footer>
 
     </div>
-    <script src="/js/main.js"></script>
-<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+    <script src="/js/main.min.92692cb8cb4a2471f55072c364adea325da7e220ebd9e124054735ff105ffd57.js" integrity="sha256-kmksuMtKJHH1UHLDZK3qMl2n4iDr2eEkBUc1/xBf/Vc=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js" integrity="sha256-c0eKfUgHaYrtfjVesj&#43;YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin="anonymous"></script>
 <script src='/js/tabpane-persist.js'></script>
 
   </body>

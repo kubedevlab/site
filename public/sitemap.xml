@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/docs/tutorials/kubernetes-cluster/</loc>
+    <loc>https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/prereqs/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/kube-base-image/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/bootstrap/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/monitoring/_index./</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/kubernetes-cluster/pod-network/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/tutorials/</loc>
+    <lastmod>2025-03-24T22:06:43-04:00</lastmod>
+  </url><url>
+    <loc>https://www.kubedevlab.com/categories/</loc>
+  </url><url>
+    <loc>https://www.kubedevlab.com/docs/</loc>
     <lastmod>2025-03-22T08:53:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tutorials/monitoring/_index./</loc>
-    <lastmod>2025-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tutorials/kubernetes-cluster/kube-base-image/</loc>
-    <lastmod>2025-03-22T14:57:17-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tutorials/kubernetes-cluster/bootstrap/</loc>
-    <lastmod>2025-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tutorials/kubernetes-cluster/prereqs/</loc>
+    <loc>https://www.kubedevlab.com/</loc>
     <lastmod>2025-03-22T08:53:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/tutorials/kubernetes-cluster/pod-network/</loc>
-    <lastmod>2025-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/tutorials/</loc>
-    <lastmod>2025-03-22T08:53:39-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/docs/</loc>
-    <lastmod>2025-03-22T08:53:39-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-03-22T08:53:39-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.kubedevlab.com/tags/</loc>
   </url>
 </urlset>
