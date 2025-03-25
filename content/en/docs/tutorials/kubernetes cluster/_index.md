@@ -1,8 +1,7 @@
 ---
 title: Building a kubernetes cluster
-#description: Development cluster
-date: 2017-01-04
-weight: 8
+date: 2025-03-22
+weight: 2
 ---
 
 {{% pageinfo %}}

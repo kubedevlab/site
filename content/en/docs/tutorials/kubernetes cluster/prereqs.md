@@ -1,7 +1,7 @@
 ---
 title: Getting started
-date: 2017-01-04
-weight: 6
+date: 2025-03-22
+weight: 2
 ---
 
 {{% pageinfo %}}
@@ -10,7 +10,6 @@ Overview of the build process
 
 These are the tutorials that show how to build a cluster, you should complete them in order:
 
-- [building a base image](kube-base-image.md)
-- configuring VM's for your network setup
-- bootstrapping with kubeadm
-- adding a pod network
+- [Building a base VM image](kube-base-image.md)
+- [Configure VMs, bootstrap cluster](bootstrap.md)
+- [Install a Pod network add-on](pod-network.md)

@@ -1,8 +1,8 @@
 ---
 title: Building a base VM image
 description: How to build a base VM image for use with kubeadm.
-date: 2017-01-04
-weight: 8
+date: 2025-03-22
+weight: 3
 ---
 
 {{% pageinfo %}}
@@ -30,4 +30,6 @@ After this you can run `make` to build the KVM image, note the default behavior 
 
 After about 5-10 minutes you should have a configured debian base image under `output`
 
-You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.
+You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.  Use virt-manager, or virsh to import these disk images into KVM for later use.  It's recommended to give the workers 4GB or more of RAM.
+
+Default Username / Password is `debian` you may use SSH, console, or serial access to login to the node.

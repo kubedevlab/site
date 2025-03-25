@@ -26,14 +26,14 @@
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:published_time" content="2017-01-04T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-03-22T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-03-22T14:57:17-04:00">
 
   <meta itemprop="name" content="Building a base VM image">
   <meta itemprop="description" content="How to build a base VM image for use with kubeadm.">
-  <meta itemprop="datePublished" content="2017-01-04T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-03-22T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-22T14:57:17-04:00">
-  <meta itemprop="wordCount" content="212">
+  <meta itemprop="wordCount" content="256">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Building a base VM image">
   <meta name="twitter:description" content="How to build a base VM image for use with kubeadm.">
@@ -87,8 +87,14 @@
   <a href="/docs/tutorials/kubernetes-cluster/prereqs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docstutorialskubernetes-clusterprereqs"><span class="">Getting started</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docstutorialskubernetes-clusterkube-base-image-li">
   <a href="/docs/tutorials/kubernetes-cluster/kube-base-image/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__page" id="m-docstutorialskubernetes-clusterkube-base-image"><span class="td-sidebar-nav-active-item">Building a base VM image</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docstutorialskubernetes-clusterbootstrap-li">
+  <a href="/docs/tutorials/kubernetes-cluster/bootstrap/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docstutorialskubernetes-clusterbootstrap"><span class="">Configure VMs, bootstrap cluster</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docstutorialskubernetes-clusterpod-network-li">
+  <a href="/docs/tutorials/kubernetes-cluster/pod-network/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docstutorialskubernetes-clusterpod-network"><span class="">Install a Pod network add-on</span></a>
 </li>
   </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docstutorialsmonitoring_index-li">
+  <a href="/docs/tutorials/monitoring/_index./" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docstutorialsmonitoring_index"><span class="">Monitoring a kubernetes cluster</span></a>
 </li>
   </ul>
 </li>
@@ -157,7 +163,8 @@
 <p>Depending on your home folder, that may look something like this: <code>ln -s ~/.ssh/id_rsa.pub files/authorized_keys</code></p>
 <p>After this you can run <code>make</code> to build the KVM image, note the default behavior is that you won&rsquo;t see the VM screen output, but you can adjust that behavior but updating the <code>base-kvm.pkr.hcl</code> file, updating this line to false: <code>headless = true</code></p>
 <p>After about 5-10 minutes you should have a configured debian base image under <code>output</code></p>
-<p>You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.</p>
+<p>You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.  Use virt-manager, or virsh to import these disk images into KVM for later use.  It&rsquo;s recommended to give the workers 4GB or more of RAM.</p>
+<p>Default Username / Password is <code>debian</code> you may use SSH, console, or serial access to login to the node.</p>
 
 	<div class="td-page-meta__lastmod">
   Last modified March 22, 2025: <a href="https://github.com/kubedevlab/site/commit/f3a7a66977dbcbdc4bd556691d4a8307c36e4534">- update formatting - updating favico (f3a7a66)</a>

@@ -141,8 +141,32 @@ This is the multi-page printable view of this section.
 
     
   
+    
+    
+	
+<li>1.1.3: <a href="#pg-9b6640416744248c5d78f81509441288">Configure VMs, bootstrap cluster</a></li>
+
+
+    
+  
+    
+    
+	
+<li>1.1.4: <a href="#pg-a990fc50bfca68a061d260c198efc743">Install a Pod network add-on</a></li>
+
+
+    
+  
 
     </ul>
+    
+  
+    
+    
+	
+<li>1.2: <a href="#pg-447d5c44b8b9d80cdeddbbeb3c5caa3d">Monitoring a kubernetes cluster</a></li>
+
+
     
   
 
@@ -249,10 +273,9 @@ Please provide any feedback, if something could use more clarity, either by issu
 
 <p>These are the tutorials that show how to build a cluster, you should complete them in order:</p>
 <ul>
-<li><a href="/docs/tutorials/kubernetes-cluster/kube-base-image/">building a base image</a></li>
-<li>configuring VM&rsquo;s for your network setup</li>
-<li>bootstrapping with kubeadm</li>
-<li>adding a pod network</li>
+<li><a href="/docs/tutorials/kubernetes-cluster/kube-base-image/">Building a base VM image</a></li>
+<li><a href="/docs/tutorials/kubernetes-cluster/bootstrap/">Configure VMs, bootstrap cluster</a></li>
+<li><a href="/docs/tutorials/kubernetes-cluster/pod-network/">Install a Pod network add-on</a></li>
 </ul>
 
 </div>
@@ -291,7 +314,8 @@ Please provide any feedback, if something could use more clarity, either by issu
 <p>Depending on your home folder, that may look something like this: <code>ln -s ~/.ssh/id_rsa.pub files/authorized_keys</code></p>
 <p>After this you can run <code>make</code> to build the KVM image, note the default behavior is that you won&rsquo;t see the VM screen output, but you can adjust that behavior but updating the <code>base-kvm.pkr.hcl</code> file, updating this line to false: <code>headless = true</code></p>
 <p>After about 5-10 minutes you should have a configured debian base image under <code>output</code></p>
-<p>You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.</p>
+<p>You can copy this image 2-3 times, for each VM you want to bootstrap, for example one master, two workers.  Use virt-manager, or virsh to import these disk images into KVM for later use.  It&rsquo;s recommended to give the workers 4GB or more of RAM.</p>
+<p>Default Username / Password is <code>debian</code> you may use SSH, console, or serial access to login to the node.</p>
 
 </div>
 
@@ -300,6 +324,72 @@ Please provide any feedback, if something could use more clarity, either by issu
     
 	
   
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-9b6640416744248c5d78f81509441288">1.1.3 - Configure VMs, bootstrap cluster</h1>
+    <div class="lead">Setup VM&rsquo;s, use kubeadm to create cluster</div>
+	<h2 id="configure-networking">Configure networking<a class="td-heading-self-link" href="#configure-networking" aria-label="Heading self-link"></a></h2>
+<p>When using KVM there are two types of networks most commonly used, NAT and bridge mode.  If you want to have other computers attaching to your Kubernetes nodes it&rsquo;s recommended to use bridge mode.  Depending on your distribution this process may be slightly different, and is out of scope for this document.</p>
+<p>Assuming you did configure bridge mode, you&rsquo;ll want to pick out a few static IP&rsquo;s for your nodes.  You can set these via DHCP reservations, or alternatively by updating the <code>/etc/network/interfaces</code> file.</p>
+<p>After configuring a static IP, reboot the VM for it to take effect, and rename the node accordingly.</p>
+<h2 id="bootstrap-master-node">Bootstrap master node<a class="td-heading-self-link" href="#bootstrap-master-node" aria-label="Heading self-link"></a></h2>
+<p>The initial boot strapping is pretty straight forward.  Assuming everything is built correctly, you can type <code>sudo kubeadm init</code> to begin this process.  After it&rsquo;s complete it will provide a token snippet to be used on the worker nodes.  Also, it will give instructions about the <code>KUBECONFIG</code> file you need to copy off via SSH if you want to manage it remotely.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-a990fc50bfca68a061d260c198efc743">1.1.4 - Install a Pod network add-on</h1>
+    <div class="lead">A pod network add-on is neccessary for pod communication</div>
+	
+</div>
+
+
+
+    
+	
+  
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-447d5c44b8b9d80cdeddbbeb3c5caa3d">1.2 - Monitoring a kubernetes cluster</h1>
+    
+	<!-- 
+
+<div class="pageinfo pageinfo-primary">
+<p>todo</p>
+
+</div>
+
+
+todo
+ -->
+</div>
+
+
 
     
 	
